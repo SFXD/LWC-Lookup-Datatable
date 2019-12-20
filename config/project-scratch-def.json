@@ -1,0 +1,11 @@
+{
+  "orgName": "LWC Lookup Datatable Org",
+  "edition": "Developer",
+  "features": [],
+  "settings": {
+    "orgPreferenceSettings": {
+      "s1DesktopEnabled": true,
+      "hasSampleData": true
+    }
+  }
+}

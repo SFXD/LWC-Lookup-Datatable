@@ -1,0 +1,17 @@
+<!--
+ - Created by Atlas on 22.10.2019.
+ -->
+
+<!-- Acceditdatatable -->
+<template>
+    <div class={tableClass}>
+        <lightning-datatable
+                key-field="Id"
+                data={accountEditList.data}
+                show-row-number-column="true"
+                onsave={handleSave}
+                draft-values={saveDraftValues}
+                columns={columns}>
+        </lightning-datatable>
+    </div>
+</template>
