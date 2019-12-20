@@ -1,0 +1,74 @@
+<!--
+ - Created by Atlas on 11.10.2019.
+ -->
+
+<!-- Accdatatable -->
+
+<template>
+    <template if:false={moveToNextPage}>
+        <div class=slds-p-around--x-small>
+            <lightning-button class=slds-p-right_small
+                              variant="brand"
+                              label="Add Account"
+                              icon-name="utility:download"
+                              onclick={handleClickAdd}>
+            </lightning-button>
+
+
+            <lightning-button
+                    variant="destructive"
+                    label="Clear All Accounts"
+                    icon-name="utility:recycle_bin_empty"
+                    onclick={handleClickRemove}>
+            </lightning-button>
+
+            <lightning-button class=slds-float--right
+                              variant={buttonState}
+                              label="Next"
+                              onclick={handleClickNext}>
+            </lightning-button>
+        </div>
+
+    </template>
+
+    <template if:true={moveToNextPage}>
+        <div class=slds-p-around--x-small>
+            <lightning-button class="slds-float--right"
+                              variant="brand"
+                              label="Previous"
+                              onclick={handleClickPrevious}>
+            </lightning-button>
+        </div>
+    </template>
+
+
+    <div class="slds-grid slds-wrap slds-p-around--x-small">
+        <template for:each={totalAccounts} for:item="account">
+            <lightning-card title="" class="slds-box_border slds-p-around--small" key={account.Id}>
+                <h3 slot="title">
+                    <lightning-icon icon-name="new_account" size="small"></lightning-icon>
+                    {account.Name},
+                </h3>
+                <p class="slds-p-horizontal_small"> {account.Phone} {account.Rating}</p>
+            </lightning-card>
+        </template>
+    </div>
+
+    <template if:false={moveToNextPage}>
+        <div class={tableClass}>
+            <lightning-datatable
+                    key-field="id"
+                    data={accounts}
+                    selected-rows={selectedRows}
+                    show-row-number-column="true"
+                    columns={columns}>
+            </lightning-datatable>
+        </div>
+    </template>
+
+    <template if:true={moveToNextPage}>
+        <c-acceditdatatable account-id-list={selectedIds}></c-acceditdatatable>
+    </template>
+
+
+</template>
